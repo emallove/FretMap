@@ -64,7 +64,7 @@ $(function() {
 
 
 	// VARS
-	var listOfScales = "minor-blues pentatonic-minor major dorian chromatic";
+	var listOfScales = "minor-blues pentatonic-minor major dorian chromatic whole-tone";
 	var listOfNotes = "e f fs g gs a bf b c cs d ds";
 
 	// ---------------------------
@@ -94,6 +94,15 @@ $(function() {
 		$(this).parent().addClass('active');
 		$('ul.select-root').removeClass(listOfScales).addClass('chromatic');
 		$('#current-root-scale .scale').html('Chromatic');
+		changeNotes(); // Change the notes given the current classes active
+	});
+
+	$('ul.select-scale li.scale-whole-tone a').click(function(e) {
+		e.preventDefault();
+		$('.select-scale li').removeClass('active');
+		$(this).parent().addClass('active');
+		$('ul.select-root').removeClass(listOfScales).addClass('whole-tone');
+		$('#current-root-scale .scale').html('Whole tone');
 		changeNotes(); // Change the notes given the current classes active
 	});
 
@@ -876,6 +885,71 @@ $(function() {
 		else if (($('ul.select-root.chromatic li.show-root-ds.active').length) && ($('ul.select-scale.ds li.scale-chromatic.active').length)) {
 			$('.note-ds').addClass('root');
 			$('.note').addClass('on');
+		}
+
+		// CONDITIONAL
+		// whole-tone
+		// ------------------------
+
+		// E
+		if (($('ul.select-root.whole-tone li.show-root-e.active').length) && ($('ul.select-scale.e li.scale-whole-tone.active').length)) {
+			$('.note-e').addClass('root');
+			$('.note-e, .note-fs, .note-gs, .note-as, .note-c, .note-d').addClass('on');
+		}
+		// F
+		else if (($('ul.select-root.whole-tone li.show-root-f.active').length) && ($('ul.select-scale.f li.scale-whole-tone.active').length)) {
+			$('.note-f').addClass('root');
+			$('.note-f, .note-g, .note-a, .note-b, .note-cs, .note-ds').addClass('on');
+		}
+		// F#
+		else if (($('ul.select-root.whole-tone li.show-root-fs.active').length) && ($('ul.select-scale.fs li.scale-whole-tone.active').length)) {
+			$('.note-fs').addClass('root');
+			$('.note-fs, .note-gs, .note-as, .note-c, .note-d, .note-e').addClass('on');
+		}
+		// G
+		else if (($('ul.select-root.whole-tone li.show-root-g.active').length) && ($('ul.select-scale.g li.scale-whole-tone.active').length)) {
+			$('.note-g').addClass('root');
+			$('.note-g, .note-a, .note-b, .note-cs, .note-ds, .note-f').addClass('on');
+		}
+		// G#
+		else if (($('ul.select-root.whole-tone li.show-root-gs.active').length) && ($('ul.select-scale.gs li.scale-whole-tone.active').length)) {
+			$('.note-gs').addClass('root');
+			$('.note-gs, .note-as, .note-c, .note-d, .note-e, .note-fs').addClass('on');
+		}
+		// A
+		else if (($('ul.select-root.whole-tone li.show-root-a.active').length) && ($('ul.select-scale.a li.scale-whole-tone.active').length)) {
+			$('.note-a').addClass('root');
+			$('.note-a, .note-b, .note-cs, .note-ds, .note-f, .note-g').addClass('on');
+		}
+		// Bb
+		else if (($('ul.select-root.whole-tone li.show-root-bf.active').length) && ($('ul.select-scale.bf li.scale-whole-tone.active').length)) {
+			$('.note-bf').addClass('root');
+			$('.note-bf, .note-c, .note-d, .note-e, .note-gf, .note-af').addClass('on');
+		}
+		// B
+		else if (($('ul.select-root.whole-tone li.show-root-b.active').length) && ($('ul.select-scale.b li.scale-whole-tone.active').length)) {
+			$('.note-b').addClass('root');
+			$('.note-b, .note-cs, .note-ds, .note-f, .note-g, .note-a').addClass('on');
+		}
+		// C
+		else if (($('ul.select-root.whole-tone li.show-root-c.active').length) && ($('ul.select-scale.c li.scale-whole-tone.active').length)) {
+			$('.note-c').addClass('root');
+			$('.note-c, .note-d, .note-e, .note-fs, .note-gs, .note-as').addClass('on');
+		}
+		// C#
+		else if (($('ul.select-root.whole-tone li.show-root-cs.active').length) && ($('ul.select-scale.cs li.scale-whole-tone.active').length)) {
+			$('.note-cs').addClass('root');
+			$('.note-cs, .note-ds, .note-f, .note-g, .note-a, .note-b').addClass('on');
+		}
+		// D
+		else if (($('ul.select-root.whole-tone li.show-root-d.active').length) && ($('ul.select-scale.d li.scale-whole-tone.active').length)) {
+			$('.note-d').addClass('root');
+			$('.note-d, .note-e, .note-fs, .note-gs, .note-as, .note-c').addClass('on');
+		}
+		// D#
+		else if (($('ul.select-root.whole-tone li.show-root-ds.active').length) && ($('ul.select-scale.ds li.scale-whole-tone.active').length)) {
+			$('.note-ds').addClass('root');
+			$('.note-ds, .note-f, .note-g, .note-a, .note-b, .note-cs').addClass('on');
 		}
 
 	}
